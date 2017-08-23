@@ -4,6 +4,11 @@ namespace Todo;
 
 class Application
 {
+    public function __construct()
+    {
+
+    }
+
     public function boot()
     {
         var_dump(123);

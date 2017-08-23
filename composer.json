@@ -9,7 +9,8 @@
     ],
     "minimum-stability": "beta",
     "require": {
-        "league/route": "^3.0"
+        "league/route": "^3.0",
+        "zendframework/zend-diactoros": "^1.5"
     },
     "autoload": {
         "psr-4": {

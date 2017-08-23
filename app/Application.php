@@ -4,7 +4,7 @@ namespace Todo;
 
 class Application
 {
-    public function start()
+    public function boot()
     {
         var_dump(123);
     }

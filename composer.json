@@ -1,0 +1,12 @@
+{
+    "name": "molsm/todo-app",
+    "description": "ToDo application PHP + VueJs",
+    "authors": [
+        {
+            "name": "Maris Mols",
+            "email": "maris9229@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

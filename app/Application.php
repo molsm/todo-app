@@ -11,8 +11,11 @@ class Application
 
     private $route;
 
-    public function __construct()
+    private $root;
+
+    public function __construct($root)
     {
+        $this->root = $root;
         $this->container = new \League\Container\Container;
         $this->container->delegate(
             new \League\Container\ReflectionContainer
@@ -32,7 +35,7 @@ class Application
 
     }
 
-    public function boot()
+    public function run()
     {
         $this->route->map('GET', '/', function (ServerRequestInterface $request, ResponseInterface $response) {
             $response->getBody()->write('<h1>Hello, World!</h1>');
@@ -45,6 +48,8 @@ class Application
 
             return $response;
         });
+
+        $this->route->map('GET', '/ab', 'Todo\Controllers\AcmeController::someMethod');
 
         $response = $this->route->dispatch($this->container->get('request'), $this->container->get('response'));
         $this->container->get('emitter')->emit($response);

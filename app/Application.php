@@ -32,6 +32,7 @@ class Application
         $this->container->share('route', $this->route);
 
         $mainConfig = require $root . '/../config/app.php';
+        $this->container->add('config', $mainConfig);
 
         foreach ($mainConfig['providers'] as $provider) {
             $this->container->addServiceProvider($provider);

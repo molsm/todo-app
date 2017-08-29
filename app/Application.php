@@ -11,12 +11,10 @@ class Application
 
     private $route;
 
-    private $root;
-
     public function __construct($root)
     {
-        $this->root = $root;
         $this->container = new \League\Container\Container;
+        $this->container->add('basePath', $root);
         $this->container->delegate(
             new \League\Container\ReflectionContainer
         );
@@ -33,23 +31,26 @@ class Application
         $this->route = new \League\Route\RouteCollection($this->container);
         $this->container->share('route', $this->route);
 
+        $mainConfig = require $root . '/../config/app.php';
+
+        foreach ($mainConfig['providers'] as $provider) {
+            $this->container->addServiceProvider($provider);
+        }
     }
 
     public function run()
     {
-        $this->route->map('GET', '/', function (ServerRequestInterface $request, ResponseInterface $response) {
-            $response->getBody()->write('<h1>Hello, World!</h1>');
-
-            return $response;
-        });
-
-        $this->route->map('GET', '/a', function (ServerRequestInterface $request, ResponseInterface $response) {
-            $response->getBody()->write('<h1>Lol!</h1>');
-
-            return $response;
-        });
-
-        $this->route->map('GET', '/ab', 'Todo\Controllers\AcmeController::someMethod');
+//        $this->route->map('GET', '/', function (ServerRequestInterface $request, ResponseInterface $response) {
+//            $response->getBody()->write('<h1>Hello, World!</h1>');
+//
+//            return $response;
+//        });
+//
+//        $this->route->map('GET', '/a', function (ServerRequestInterface $request, ResponseInterface $response) {
+//            $response->getBody()->write('<h1>Lol!</h1>');
+//
+//            return $response;
+//        });
 
         $response = $this->route->dispatch($this->container->get('request'), $this->container->get('response'));
         $this->container->get('emitter')->emit($response);

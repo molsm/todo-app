@@ -4,8 +4,6 @@ namespace Todo\Provider;
 
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Container\ServiceProvider\BootableServiceProviderInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 class RouterServiceProvider extends AbstractServiceProvider implements BootableServiceProviderInterface
 {
@@ -17,9 +15,11 @@ class RouterServiceProvider extends AbstractServiceProvider implements BootableS
 
         foreach ($routes as $routeData) {
             $route = new \StdClass;
-            $route->method = $routeData[0];
+            $route->httpMethod = $routeData[0];
+            $route->path = $routeData[1];
+            $route->subject = $routeData[2] . '::proceed';
 
-            $this->getContainer()->get('route')->map($route);
+            $this->map($route);
         }
     }
 
@@ -30,12 +30,7 @@ class RouterServiceProvider extends AbstractServiceProvider implements BootableS
 
     protected function map(\StdClass $route)
     {
-        $this->getContainer()->get('route')->map($route[0], [1], function (ServerRequestInterface $request, ResponseInterface $response) {
-
-
-
-            $response->getBody()->write('<h1>Hello, World!</h1>');
-            return $response;
-        });
+        $this->getContainer()
+            ->get('route')->map($route->httpMethod, $route->path, $route->subject);
     }
 }

@@ -1,5 +1,5 @@
 <?php
 
 return [
-    ['GET', '/', 'Todo\Controllers\AcmeController@someMethod']
+    ['GET', '/', 'Todo\Controllers\HomeController']
 ];

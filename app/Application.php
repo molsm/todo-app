@@ -40,18 +40,6 @@ class Application
 
     public function run()
     {
-//        $this->route->map('GET', '/', function (ServerRequestInterface $request, ResponseInterface $response) {
-//            $response->getBody()->write('<h1>Hello, World!</h1>');
-//
-//            return $response;
-//        });
-//
-//        $this->route->map('GET', '/a', function (ServerRequestInterface $request, ResponseInterface $response) {
-//            $response->getBody()->write('<h1>Lol!</h1>');
-//
-//            return $response;
-//        });
-
         $response = $this->route->dispatch($this->container->get('request'), $this->container->get('response'));
         $this->container->get('emitter')->emit($response);
     }

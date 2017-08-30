@@ -31,11 +31,9 @@ class AppServiceProvider extends AbstractServiceProvider implements BootableServ
 
     protected function registerView()
     {
-        $this->getContainer()
-            ->share(View::class, function() {
-                $twig = new \Twig_Environment(new \Twig_Loader_Filesystem($this->basePath.'/../'.$this->config['templatePath']));
-                return new View($twig);
-            });
-        $this->getContainer()->add(ViewInterface::class, View::class);
+        $this->getContainer()->add(View::class, function() {
+            $twig = new \Twig_Environment(new \Twig_Loader_Filesystem($this->basePath.'/../'.$this->config['templatePath']));
+            return new View($twig);
+        });
     }
 }

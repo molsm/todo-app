@@ -4,8 +4,8 @@ namespace Todo\Provider;
 
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Container\ServiceProvider\BootableServiceProviderInterface;
-use Twig_Environment;
-use Twig_Loader_Filesystem;
+use Todo\Contracts\ViewInterface;
+use Todo\Services\View;
 
 class AppServiceProvider extends AbstractServiceProvider implements BootableServiceProviderInterface
 {
@@ -15,7 +15,7 @@ class AppServiceProvider extends AbstractServiceProvider implements BootableServ
     private $config;
 
     protected $provides = [
-        'view'
+        View::class
     ];
 
     public function boot()
@@ -31,9 +31,11 @@ class AppServiceProvider extends AbstractServiceProvider implements BootableServ
 
     protected function registerView()
     {
-        $loader = new Twig_Loader_Filesystem($this->basePath.'/../'.$this->config);
-        $twig = new Twig_Environment($loader);
-
-        $this->getContainer()->add('view', $twig);
+        $this->getContainer()
+            ->share(View::class, function() {
+                $twig = new \Twig_Environment(new \Twig_Loader_Filesystem($this->basePath.'/../'.$this->config['templatePath']));
+                return new View($twig);
+            });
+        $this->getContainer()->add(ViewInterface::class, View::class);
     }
 }

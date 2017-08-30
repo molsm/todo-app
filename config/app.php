@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'templatePath' => 'resources/view',
+    'templatePath' => 'resources/views',
 
     'providers' => [
-        \Todo\Provider\AppServiceProvider::class,
-        \Todo\Provider\RouterServiceProvider::class
+        \Todo\Provider\RouterServiceProvider::class,
+        \Todo\Provider\AppServiceProvider::class
     ]
 ];

@@ -18,13 +18,15 @@ gulp.task('sass', function () {
 });
 
 gulp.task('scripts', function() {
-    console.log(' -- gulp is moving js file');
+    console.log(' -- gulp is moving js files');
 
     gulp.src('./resources/assets/js/**/*.js')
         .pipe(concat('app.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./public/js'));
+});
 
+gulp.task('move-js-lib', function () {
     gulp.src('node_modules/vue/dist/vue.js')
         .pipe(include())
         .on('error', console.log)
@@ -35,6 +37,7 @@ gulp.task('scripts', function() {
 
 gulp.task('watch', function () {
     gulp.watch('./resources/assets/sass/**/*.scss', ['sass']);
+    gulp.watch('./resources/assets/js/**/*.js', ['scripts']);
 });
 
 gulp.task('default', function() {

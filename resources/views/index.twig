@@ -1,7 +1,8 @@
 {% include 'includes/header.twig' %}
 
 <div id="app">
-
+    <input type="text" id="input" v-model="message">
+    <p>The values of the input is: ${ message }</p>
 </div>
 
 {% include 'includes/footer.twig' %}

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "19c25a49f61ae7202d1dd367efa55a20",
+    "content-hash": "c05cdc988856954b2e957609ae74e411",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -165,6 +165,54 @@
                 "route"
             ],
             "time": "2017-03-22T09:09:41+00:00"
+        },
+        {
+            "name": "morris/lessql",
+            "version": "v0.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/morris/lessql.git",
+                "reference": "ff6c631e3abf1d3ee618f5262be4cc6ed09f6957"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/morris/lessql/zipball/ff6c631e3abf1d3ee618f5262be4cc6ed09f6957",
+                "reference": "ff6c631e3abf1d3ee618f5262be4cc6ed09f6957",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.4"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "phpunit/phpunit": "~4.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Morris Brodersen",
+                    "homepage": "http://morrisbrodersen.de"
+                }
+            ],
+            "description": "LessQL: The agile PHP ORM alternative",
+            "homepage": "http://github.com/morris/lessql",
+            "keywords": [
+                "database",
+                "notorm",
+                "orm",
+                "pdo",
+                "sql"
+            ],
+            "time": "2016-07-06T15:10:11+00:00"
         },
         {
             "name": "nikic/fast-route",

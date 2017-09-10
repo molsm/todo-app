@@ -11,7 +11,8 @@
     "require": {
         "league/route": "^3.0",
         "zendframework/zend-diactoros": "^1.5",
-        "twig/twig": "^2.0"
+        "twig/twig": "^2.0",
+        "morris/lessql": "^0.3.4"
     },
     "autoload": {
         "psr-4": {

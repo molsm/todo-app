@@ -1,13 +1,13 @@
 <?php declare(strict_types = 1);
 
-namespace Todo\Controllers;
+namespace Todo\Controllers\Task;
 
 use Todo\Controllers\AbstractController;
 
-class Home extends AbstractController
+class Add extends AbstractController
 {
     public function execute()
     {
-        return $this->view->render('index.twig');
+        return $this->view->json([123]);
     }
 }

@@ -4,7 +4,7 @@ namespace Todo\Controllers;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Todo\Contracts\ViewInterface;
+use Todo\Services\Database;
 use Todo\Services\View;
 use Zend\Diactoros\Response\JsonResponse;
 
@@ -18,9 +18,15 @@ abstract class AbstractController
      */
     protected $view;
 
-    public function __construct(View $view)
+    /**
+     * @var Database
+     */
+    protected $database;
+
+    public function __construct(View $view, Database $database)
     {
         $this->view = $view;
+        $this->database = $database;
     }
 
     /**

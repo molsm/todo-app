@@ -25,7 +25,7 @@ class RouterServiceProvider extends AbstractServiceProvider implements BootableS
 
     public function register()
     {
-        $this->getContainer();
+        // Todo
     }
 
     protected function map(\StdClass $route)

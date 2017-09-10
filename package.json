@@ -4,6 +4,7 @@
   "description": "ToDo application PHP + VueJs",
   "main": "gulpfile.js",
   "dependencies": {
+    "bulma": "^0.5.1",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-include": "^2.3.1",

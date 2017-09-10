@@ -1,8 +1,14 @@
 {% include 'includes/header.twig' %}
 
 <div id="app">
-    <input type="text" id="input" v-model="message">
-    <p>The values of the input is: ${ message }</p>
+    <div class="main">
+        <h1>TODO</h1>
+        <input type="text" placeholder="Enter task here">
+        <button class="place-todo">Enter</button>
+    </div>
+    <div class="todo-list">
+
+    </div>
 </div>
 
 {% include 'includes/footer.twig' %}
